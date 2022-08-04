@@ -18,5 +18,5 @@ Decentralized game application that interacts with a Solidity smart contract dep
 - Solidity
 - Alchemy/Hardhat (for smart contract deployment)
 
-# Contract Interaction Examples
+## Contract Interaction Examples
 ![image](https://user-images.githubusercontent.com/74326452/182949518-9591d14f-c043-45de-9c8e-4b900344e7ea.png) ![image](https://user-images.githubusercontent.com/74326452/182951149-ed19c9fe-1c0c-4318-ab4b-b677b53ecaf3.png)
