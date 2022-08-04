@@ -10,7 +10,7 @@ let key_pressed = {};
 
 let score = 0;
 let opponent_score = 0;
-let timer = 5;
+let timer = 90;
 let chickenX = 770;
 let chickenY = 750;
 let lanes = [[], [], [], [], [], []];
