@@ -38,6 +38,32 @@ io.on("connection", socket => {
         io.to(opponent_id).emit("join_match", socket.id);
     });
 
+    // Failed to create match (likely due to decline of transaction).
+    socket.on("match_create_fail", (opponent_id) => {
+        io.to(opponent_id).emit("create_fail");
+        for(let i = 0; i < rooms.length; i++) {
+            p1 = rooms[i][0];
+            p2 = rooms[i][1];
+            if (p1["socket_id"] == socket.id || p2["socket_id"] == socket.id) {
+                rooms.splice(i, 1);
+                break;
+            }
+        }
+    });
+
+    // Failed to join match (likely due to decline of transaction).
+    socket.on("match_join_fail", (opponent_id) => {
+        io.to(opponent_id).emit("join_fail");
+        for(let i = 0; i < rooms.length; i++) {
+            p1 = rooms[i][0];
+            p2 = rooms[i][1];
+            if (p1["socket_id"] == socket.id || p2["socket_id"] == socket.id) {
+                rooms.splice(i, 1);
+                break;
+            }
+        }
+    });
+
     // Both players joined and placed bet. Begin match.
     socket.on("match_start", (opponent_id) => { 
         io.to(socket.id).emit("start");
